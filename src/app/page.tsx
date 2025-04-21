@@ -1,5 +1,10 @@
 'use client';
 
+// 服务器端配置，防止客户端缓存
+export const dynamic = 'force-dynamic';
+// revalidate不能在客户端组件中使用
+// export const revalidate = 0;
+
 import React, { useEffect, useState } from 'react';
 import { getCurrentLocation } from './utils/location';
 import { 

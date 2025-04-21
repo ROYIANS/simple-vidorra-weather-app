@@ -3,6 +3,10 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
+// 设置整个应用的重新验证策略
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -11,6 +15,11 @@ export const metadata: Metadata = {
   keywords: "天气预报, 降水预报, 天气应用, 彩云天气",
   applicationName: "天气预报H5应用",
   authors: [{ name: "Next.js 天气应用" }],
+  other: {
+    'Cache-Control': 'no-cache, no-store, must-revalidate',
+    'Pragma': 'no-cache',
+    'Expires': '0'
+  }
 };
 
 export const viewport: Viewport = {
