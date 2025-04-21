@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,6 +27,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
+      <head>
+      <script
+          defer
+          src="https://stat.vidorra.life/script.js"
+          data-website-id="d74bb1f4-3014-4c45-9920-de696ab05a2d"
+        ></script>
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );

@@ -128,7 +128,7 @@ export default function Home() {
       
       if (location.error) {
         console.warn(`位置获取警告: ${location.error}, 使用默认位置继续`);
-        setLocationName("默认位置"); 
+        setLocationName("默认位置：北京"); 
       } else {
         // 获取城市信息
         const cityName = await fetchCityInfo(location.longitude, location.latitude);
