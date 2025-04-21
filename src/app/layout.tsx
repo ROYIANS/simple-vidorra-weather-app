@@ -34,15 +34,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // 从环境变量中获取统计ID和统计脚本URL
+  const analyticsId = process.env.NEXT_PUBLIC_ANALYTICS_ID;
+  const analyticsScriptUrl = process.env.NEXT_PUBLIC_ANALYTICS_SCRIPT_URL;
+
   return (
     <html lang="zh-CN">
       <head>
-      {/* TODO:抽离环境变量 */}
-      <script
+      {/* 只有在设置了环境变量时才添加统计脚本 */}
+      {analyticsId && analyticsScriptUrl && (
+        <script
           defer
-          src="https://stat.vidorra.life/script.js"
-          data-website-id="d74bb1f4-3014-4c45-9920-de696ab05a2d"
-        ></script>
+          src={analyticsScriptUrl}
+          data-website-id={analyticsId}
+        />
+      )}
       </head>
       <body className={inter.className}>{children}</body>
     </html>

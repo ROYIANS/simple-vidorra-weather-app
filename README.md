@@ -4,7 +4,7 @@ An elegant weather forecast application based on Caiyun Weather API, providing r
 
 [简体中文](README.zh-CN.md) | English
 
-<a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FROYIANS%2Fsimple-vidorra-weather-app&env=NEXT_PUBLIC_CAIYUN_API_KEY"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
+<a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FROYIANS%2Fsimple-vidorra-weather-app&env=NEXT_PUBLIC_CAIYUN_API_KEY&env=NEXT_PUBLIC_ANALYTICS_ID&env=NEXT_PUBLIC_ANALYTICS_SCRIPT_URL&envDescription=API%20keys%20needed%20for%20the%20application"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
 
 ## Features
 
@@ -85,7 +85,14 @@ The application uses environment variables to manage API keys securely:
 To use your own API key, create or edit `.env.local` file:
 
 ```
+# Required: Caiyun Weather API Key
 NEXT_PUBLIC_CAIYUN_API_KEY=your_api_key_here
+
+# Optional: Analytics ID for umami analytics
+# NEXT_PUBLIC_ANALYTICS_ID=your_analytics_id
+
+# Optional: Analytics Script URL for custom analytics service
+# NEXT_PUBLIC_ANALYTICS_SCRIPT_URL=https://your-analytics-domain.com/script.js
 ```
 
 ## CORS Handling

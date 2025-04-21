@@ -2,7 +2,7 @@
 
 一个优雅的天气预报应用，基于彩云天气API，提供实时天气、降水预报和小时级预报。
 
-<a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FROYIANS%2Fsimple-vidorra-weather-app&env=NEXT_PUBLIC_CAIYUN_API_KEY"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
+<a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FROYIANS%2Fsimple-vidorra-weather-app&env=NEXT_PUBLIC_CAIYUN_API_KEY&env=NEXT_PUBLIC_ANALYTICS_ID&env=NEXT_PUBLIC_ANALYTICS_SCRIPT_URL&envDescription=API%20keys%20needed%20for%20the%20application"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
 
 ## 功能特点
 
@@ -83,7 +83,14 @@ npm start
 要使用您自己的API密钥，请创建或编辑`.env.local`文件：
 
 ```
+# 必需：彩云天气API密钥
 NEXT_PUBLIC_CAIYUN_API_KEY=你的API密钥
+
+# 可选：umami统计分析ID
+# NEXT_PUBLIC_ANALYTICS_ID=你的统计ID
+
+# 可选：统计脚本URL，用于自定义统计服务
+# NEXT_PUBLIC_ANALYTICS_SCRIPT_URL=https://你的统计域名.com/script.js
 ```
 
 ## CORS处理

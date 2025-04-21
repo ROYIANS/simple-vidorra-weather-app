@@ -17,6 +17,12 @@ const MinutelyRainForecast: React.FC<MinutelyRainForecastProps> = ({ minutely })
     return <p className="text-sm text-white/80">暂无分钟级降水数据</p>;
   }
 
+  // 检查未来2小时是否有降水
+  const hasPrecipitation = minutely.precipitation_2h.some(value => value > 0);
+  if (!hasPrecipitation) {
+    return <p className="text-sm text-white/80">未来2小时无降水</p>;
+  }
+
   // 找出最大降水量，用于归一化图表高度
   const maxPrecipitation = Math.max(...minutely.precipitation_2h.slice(0, 60)) || 1;
   
@@ -54,7 +60,7 @@ const MinutelyRainForecast: React.FC<MinutelyRainForecastProps> = ({ minutely })
                 style={{ height: `${displayHeight}%` }}
               ></div>
               {index % 10 === 0 && (
-                <span className="text-xs mt-1 text-white/80">{index}分</span>
+                <span className="text-xs mt-1 text-white/80">{index}</span>
               )}
             </motion.div>
           );
