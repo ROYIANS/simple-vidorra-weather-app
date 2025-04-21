@@ -28,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <head>
+      {/* TODO:抽离环境变量 */}
       <script
           defer
           src="https://stat.vidorra.life/script.js"
