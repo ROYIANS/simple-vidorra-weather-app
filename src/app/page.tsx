@@ -21,52 +21,26 @@ import MinutelyRainForecast from './components/MinutelyRainForecast';
 import { RiRefreshLine, RiMapPinLine, RiFileTextLine, RiDropLine, RiWindyLine, RiSunLine, RiTempColdLine } from '@remixicon/react';
 import { motion } from 'framer-motion';
 
-// 处理PC Online返回的GBK编码数据
-// @ts-ignore
+// 获取城市信息
 const fetchCityInfo = async (longitude: number, latitude: number) => {
   try {
-    // 创建一个iframe来处理跨域和编码问题
-    return new Promise<string>((resolve) => {
-      // 创建全局回调函数
-      const callbackName = 'jsonpCallback_' + Date.now();
-      // @ts-ignore
-      window[callbackName] = (data) => {
-        // 清理
-        document.body.removeChild(script);
-        // @ts-ignore
-        delete window[callbackName];
-        
-        // 返回城市名称
-        if (data && data.city) {
-          try {
-            // 尝试进行解码，处理可能的编码问题
-            const cityName = data.region ? `${data.city} ${data.region}` : data.city;
-            resolve(cityName);
-          } catch (e) {
-            console.error('城市名称解码失败:', e);
-            resolve('当前位置');
-          }
-        } else {
-          resolve('当前位置');
-        }
-      };
-      
-      // 创建script标签发起JSONP请求
-      const script = document.createElement('script');
-      script.src = `https://whois.pconline.com.cn/ipAreaCoordJson.jsp?coords=${longitude},${latitude}&callback=${callbackName}`;
-      document.body.appendChild(script);
-      
-      // 超时处理
-      setTimeout(() => {
-        // @ts-ignore
-        if (window[callbackName]) {
-          document.body.removeChild(script);
-          // @ts-ignore
-          delete window[callbackName];
-          resolve('当前位置');
-        }
-      }, 5000);
-    });
+    // 使用我们自己的API代理，直接fetch请求
+    const response = await fetch(`/api/geo?coords=${longitude},${latitude}`);
+    
+    if (!response.ok) {
+      console.error('获取城市信息失败，状态码:', response.status);
+      return '当前位置';
+    }
+    
+    const data = await response.json();
+    
+    // 返回城市名称
+    if (data && data.city) {
+      const cityName = data.region ? `${data.city} ${data.region}` : data.city;
+      return cityName;
+    } else {
+      return '当前位置';
+    }
   } catch (error) {
     console.error('获取城市信息失败:', error);
     return '当前位置';
