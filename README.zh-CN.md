@@ -2,6 +2,8 @@
 
 一个优雅的天气预报应用，基于彩云天气API，提供实时天气、降水预报和小时级预报。
 
+<a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FROYIANS%2Fsimple-vidorra-weather-app&env=NEXT_PUBLIC_CAIYUN_API_KEY"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
+
 ## 功能特点
 
 - ⛅ 实时天气信息：温度、湿度、风力等
