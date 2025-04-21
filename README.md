@@ -4,6 +4,8 @@ An elegant weather forecast application based on Caiyun Weather API, providing r
 
 [简体中文](README.zh-CN.md) | English
 
+<a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FROYIANS%2Fsimple-vidorra-weather-app&env=NEXT_PUBLIC_CAIYUN_API_KEY"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
+
 ## Features
 
 - ⛅ Real-time weather information: temperature, humidity, wind power, etc.
